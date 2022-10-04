@@ -2,7 +2,7 @@ package ch13;
 
 import java.io.FileWriter;
 
-public class FileWriteEx {
+public class FileWriterEx {
 
 	public static void main(String[] args) {
 		String str = "Dream as if you'll live forever, \n"  +
