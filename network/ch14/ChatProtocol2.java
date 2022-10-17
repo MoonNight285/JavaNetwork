@@ -19,8 +19,8 @@ public class ChatProtocol2 {
 	public static final String MESSAGE = "MESSAGE";
 	
 	// (S -> C) CHALLIST:aaa;bbb;ccc;강호동;
-	public static final String CHALLIST = "CHALLIST";
+	public static final String CHATLIST = "CHALLIST";
 	
 	//  구분자 -> 프로토콜:data(delimiter)
-	public static final String DM = ";";
+	public static final String DM = ":";
 }
