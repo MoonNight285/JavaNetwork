@@ -17,3 +17,5 @@ ch14
 * URL
 * Thread
 * EchoServer, EchoClient
+* ChatServer & ChatClient V0.1 작성
+* ChatProtocol & ChatServer V0.2 작성
