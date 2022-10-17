@@ -49,6 +49,7 @@ public class EchoServer {
 			try {
 				// Client가 접속을 하면 가장 먼저 받는 메세지
 				out.println("Hello Enter BTE to exit");
+				System.out.println("Clinet count : " + cnt);
 				while(true) {
 					// Client가 메세지 보내면 실행
 					String line = in.readLine();
