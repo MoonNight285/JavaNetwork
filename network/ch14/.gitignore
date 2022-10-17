@@ -9,3 +9,10 @@
 /EchoServer.class
 /EchoServer$EchoThread.class
 /EchoFrameClient.class
+/ChatServer1.class
+/ChatServer1$ClientThread1.class
+/ChatClient1.class
+/ChatProtocol2.class
+/ChatServer2.class
+/ChatServer2$ClientThread1.class
+/ChatServer2$ClientThread2.class
