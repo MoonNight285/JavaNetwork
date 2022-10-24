@@ -25,8 +25,8 @@ class LoginAWT3 extends MFrame implements ActionListener {
 	int port = 8004;
 	String title = "MyChat 3.0";
 	String label[] = {"ID와 PWD를 입력하세요.",
-								"ID와 PWD를 확인하세요.",
-								"이중 접속입니다."};
+						"ID와 PWD를 확인하세요.",
+						"이중 접속입니다."};
 
 	public LoginAWT3() {
 		super(450, 400, new Color(100, 200, 100));
@@ -61,22 +61,44 @@ class LoginAWT3 extends MFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object obj = e.getSource();
+		try {
 		if(obj==logBtn) {
 			connect();
 			id = idTf.getText().trim();
+			//서버로 id,pwd 전송 2022-10-24
 			out.println(ChatProtocol3.ID+ChatProtocol3.DM+id+";"
 			+pwTf.getText().trim());
+			String line = in.readLine();
+			int idx = line.indexOf(ChatProtocol3.DM);
+			String cmd = line.substring(0, idx);
+			String data = line.substring(idx+1);
+			if(cmd.equals(ChatProtocol3.ID)) {
+				if(data.equals("F")) {//로그인 실패
+					msgl.setForeground(Color.RED);
+					msgl.setText(label[1]);//ID,pwd확인하세요.
+				}else if(data.equals("C")) {//이중접속
+					msgl.setForeground(Color.BLUE);
+					msgl.setText(label[2]);//ID,pwd확인하세요.
+				}else if(data.equals("T")) {//로그인 성공
+					dispose();//창이 사라짐.
+					new ChatClient3(in, out, id);
+				}
+			}
+			}
+		}catch (Exception e2) {
+			e2.printStackTrace();
 		}
+//		2022-10-24
 	}
 	
 	public void connect() {
 		try {
 			if(sock==null) {
-				sock = new Socket(host, port);
-				in = new BufferedReader(
+			sock = new Socket(host, port);
+			in = new BufferedReader(
 					new InputStreamReader(
 							sock.getInputStream()));
-				out = new PrintWriter(
+			out = new PrintWriter(
 					sock.getOutputStream(),true/*auto flush*/);
 			}
 		} catch (Exception e) {
@@ -88,9 +110,3 @@ class LoginAWT3 extends MFrame implements ActionListener {
 		new LoginAWT3();
 	}
 }
-
-
-
-
-
-
