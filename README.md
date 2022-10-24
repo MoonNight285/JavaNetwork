@@ -18,4 +18,5 @@ ch14
 * Thread
 * EchoServer, EchoClient
 * ChatServer & ChatClient V0.1 작성
-* ChatProtocol & ChatServer V0.2 작성
+* ChatProtocol & ChatServer & ChatClient V0.2 작성
+* ChatProtocol & ChatServer V0.3 작성(클라이언트 미완성)
